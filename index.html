@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nginx PPT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css"
+      id="theme"
+    />
+
+    <style>
+      .reveal section {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 class="welcome-h2">Presentation</h1>
+          <p>Let's Discuss about Nginx</p>
+          <small>By Sukhpreet Singh (MCA)</small>
+          <br />
+        </section>
+        <section>
+          <h2>Content</h2>
+          <ol>
+            <li>What is a NGINX</li>
+            <li>What NGINX can do?</li>
+            <li>Installation</li>
+            <li>Create One user</li>
+            <li>Create user by shell script</li>
+            <li>Create Website</li>
+            <li>Create Manually error pages view</li>
+            <li>Run C Program</li>
+            <li>Breakdown Configuration</li>
+          </ol>
+        </section>
+        <!-- topic-1 start -->
+        <section>
+          <h3>What is a NGINX</h3>
+          <p style="text-align: justify">
+            Nginx is a high-performance web server primarily used for serving
+            static files, such as HTML, CSS, JavaScript, images, and other
+            assets, directly to users. It efficiently handles large numbers of
+            concurrent connections, making it ideal for delivering static
+            content quickly and with low resource consumption.
+          </p>
+        </section>
+        <!-- topic-1 end -->
+        <!-- topic-2 start -->
+        <section>
+          <h3>What Nginx can do?</h3>
+          <ul>
+            <li>
+              <b>Serve static content efficiently:</b> (HTML, CSS, JS, images,
+              etc.) directly from the file system.
+            </li>
+            <br>
+            <li>
+              <b>Handle high traffic loads: </b> By serving static files to many
+              clients concurrently with minimal resource usage.
+            </li>
+            <br>
+
+            <li>
+              <b>Cache static content</b> to improve response times and reduce
+              load on the file system.
+            </li>
+            <br>
+
+            <li>
+              <b>Handle virtual hosting:</b> to serve static files for multiple
+              domains from a single server.
+            </li>
+            <br>
+
+            <li>
+              <b>Serve error pages :</b> or custom static error responses for
+              HTTP errors like 404 or 500.
+            </li>
+          </ul>
+        </section>
+        <!-- topic-2 end -->
+        <!-- topic-3 start -->
+
+        <section>
+          <section>
+            <h2>Installation of NGINX in Linux OS</h2>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo apt update</li>
+              <small>Running sudo apt update ensures that your system's package manager has the latest information about available packages and their versions.</small>
+              <br>
+              <br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo apt install nginx</li>
+             
+              <div>
+                <img src="/status.png" width="600" alt="" />
+              </div>
+            </ul>
+          </section>
+          <section>
+            <h2>Open Browser Chrome (recommended)</h2>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Write <i style="text-decoration: underline;">localhost</i> on browser</li>
+            </ul>
+            <div>
+              <img style="border-radius: 15px; border: 2px solid #fff;" src="newimages/nginx.png" width="600" alt="" />
+            </div>
+          </section>
+          <section>
+            <h3>Basic Control Commands of NGINX</h3>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl start nginx</li>
+              <small>The command <i>sudo systemctl start nginx</i> is used to start the Nginx service on a Linux system.</small>
+              <br><br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl enable nginx</li>
+              <small>The command sudo systemctl enable nginx configures the system to automatically start the Nginx service at boot, ensuring that Nginx starts up whenever the system is restarted or powered on.</small>
+              <br><br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl status nginx</li>
+              <small>The command sudo systemctl status nginx is used to check the current status of the Nginx service.</small>
+              <br><br>
+
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl restart nginx</li>
+              <small>The command sudo systemctl restart nginx is used to restart the Nginx web server. This action stops the currently running Nginx service and then starts it again.</small>
+              <br><br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl reload nginx</li>
+              <small>The command sudo systemctl reload nginx gracefully reloads the Nginx configuration without stopping the service, allowing Nginx to apply changes (such as updates to the configuration file) without interrupting ongoing connections or requiring a full restart.</small>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Create One user</h3>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo adduser stephen</li>
+              <small>
+                This command will create a new user stephen in /home.
+              </small>
+              <br><br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo passwd stephen</li>
+              <small>Set Password for user stephen</small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> List the users</li>
+              <small>ls /home </small>
+              <li><i class="bi bi-person-fill"style="font-size: 25px;"></i> acer</li>
+              <li><i class="bi bi-person-fill"style="font-size: 25px;"></i> stephen</li>
+            </ul>
+          </section>
+<section>
+  <h3>Create basic website of user</h3>
+  <ul style="list-style-type: none;">
+    <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo mkdir /home/stephen/www</li>
+    <small>Create Manually a folder in stephen</small>
+    <br><br>
+    <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo chown stephen:stephen /home/stephen/www</li>
+    <small>The command sudo chown stephen:stephen /home/stephen/www changes the ownership of the /home/stephen/www directory to the user stephen and the group stephen, allowing this user full control over the directory and its contents.</small>
+    <br><br>
+    <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo chmod 755 /home/stephen/www</li>
+    <small>The command sudo chmod 755 /home/stephen/www sets the permissions of the /home/stephen/www directory to allow the owner (user stephen) to read, write, and execute, while granting read and execute permissions to group members and others, enabling them to access the directory.</small>
+    <br><br>
+    <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> /home/stephen/www/$ sudo touch index.html</li>
+    <small>Create an index.html file.</small>
+    <br>
+    <small>Write HTML or CSS as you want to to create website, using nano/vim </small>
+  </ul>
+</section>
+<section>
+  <h3>Edit in Configuration</h3>
+  <small style="text-align: left;">
+   location ~^/~([a-zA-Z0-9_-]+)(.*) {
+    <br>
+  alias /home/$1/www$2;
+  <br>    
+  index index.html index.htm;
+  <br>
+ autoindex on; 
+  <br>
+   fancyindex on;          
+  <br>                 
+fancyindex_css_href "/fancyindex.css";  
+  <br>    
+ }
+    </small>
+</section>
+<section>
+  <img src="/newimages/welcome.png"/>
+</section>
+          <section>
+            <h3>Create users Automatically</h3>
+            <h5>
+             To do automate the user creation process
+            </h5>
+             <h6>
+               -Create shell script file.
+             </h6>
+             <h6>
+               -Write shell scripting in file.
+             </h6>
+             <h6>
+               -Allow auto access permissions create folder and welcome file(index.html)
+             </h6>
+            </h6>
+          
+          </section>
+          <section>
+            <h3>Script file content</h3>
+            <small style="text-align: left;">
+            #!/bin/bash
+<br>
+if [ -z "$1" ]; then
+<br>
+    echo "Please provide a username."
+    <br>
+    exit 1
+    <br>
+
+fi
+<br>
+
+USERNAME=$1
+<br>
+
+USERDIR="/home/$USERNAME/www"
+<br>
+
+sudo adduser $USERNAME
+<br>
+
+sudo mkdir -p $USERDIR
+<br>
+
+sudo chown -R $USERNAME:$USERNAME /home/$USERNAME
+<br>
+
+echo "welcome page" | sudo tee $USERDIR/index.html
+<br>
+
+sudo chmod -R 755 /home/$USERNAME
+<br>
+
+echo "User $USERNAME created with default website folder and index.html file."
+            </small>
+          </section>
+          <section>
+            <h3>Edit in Configuration</h3>
+            <small style="text-align: left;">
+             location ~^/~([a-zA-Z0-9_-]+)(.*) {
+              <br>
+            alias /home/$1/www$2;
+            <br>    
+            index index.html index.htm;
+            <br>
+           autoindex on; 
+            <br>
+             fancyindex on;          
+            <br>                 
+          fancyindex_css_href "/fancyindex.css";  
+            <br>    
+           }
+              </small>
+          </section>
+          <section>
+            <h3>Open Terminal create user</h3>
+            <ul style="list-style-type: none;">
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> ./create_user.sh <i>stephen</i>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img src="/newimages/welcome.png" alt="">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Create a Website served by Nginx</h3>
+            <h5>Create Domain google.ldh.in</h5>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> First add a line in /etc/hosts</li>
+              <small>127.0.0.1 google.ldh.in</small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Navigate to /var/www/html/</li>
+              <small>Create an index.html that will render on browser.</small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Create an configuration file</li>
+              <small>google.ldh.in.conf in /etc/nginx/sites-available/
+              </small>
+              <br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Or We can use default configuration file</li>
+              <small>default in /etc/nginx/sites-available/
+              </small>
+              <br>
+            <small><i>Should be enabled.</i></small> 
+            </ul>
+          </section>
+          <section>
+            <h3>Configuration file</h3>
+            
+            <small style="text-align: left;">
+              server {
+                <br>
+                listen 80;
+                <br>
+
+                listen [::]:80;
+                <br>
+            
+                server_name google.ldh.in;
+                <br>
+
+                root /var/www/html; 
+                <br>
+              
+                index index.html index.htm;
+                <br>
+            location / {
+              <br>
+                try_files $uri $uri/ =404;
+                <br>
+            }
+            <br>
+          }            
+            </small>
+          </section>
+          <section>
+<h3>Open browser Chrome (recommended)</h3>
+<img style="width: 650px;" src="/newimages/profile.png" alt="">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Create Manually Error Pages View</h3>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo mkdir /var/www/error-pages</li>
+              <small>Create a folder and file</small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo nano /var/www/html/error-pages/403.html</li>
+              <small>Create a file 403.html</small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo nano /var/www/html/error-pages/404.html</li>
+              <small>Create a file 404.html</small>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> 
+                sudo nano /etc/nginx/sites-available/default or sudo nano
+                /etc/nginx/nginx.conf
+              </li>
+              <br>
+              <small>
+                location = /error-pages/403.html {
+                  <br>
+                  root /var/www/html;
+                  <br>
+
+                  internal;
+                  <br>
+
+              }
+              <br>
+
+        
+            location = /error-pages/404.html {
+              <br>
+
+                  root /var/www/html;
+                  <br>
+
+                  internal;
+                  <br>
+              }
+        
+              </small>
+            </ul>
+          </section>
+          <section>
+            <h4>Reload or Restart the nginx because modified the Nginx.</h4>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl restart nginx</li>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl reload nginx</li>
+            </ul>
+            <br />
+            <img src="/newimages/403.png" width="460" alt="" />
+            <img src="/newimages/404.png" width="460" alt="" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Run C Program by Nginx</h3>
+            <p style="text-align: justify">
+              To achieve the goal of compiling and running C program on nginx
+              server, CGI(Common Gateway Interface) can be one approach.CGI allows web servers to interact
+              with external programs and scripts.
+            </p>
+            <small
+              >Nginx Does not natively support CGI.But we can make it work by
+              using "fcgiwrap", which is a FastCGI wrapper for running CGI
+              scripts</small
+            >
+          </section>
+          <section>
+            <h3>Process</h3>
+            <ul style="list-style-type: none;">
+              <li> <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo apt-get install fcgiwrap</li>
+              <i>
+                -Open your Nginx configuration file,
+                /etc/nginx/sites-available/*.conf
+              </i>
+              <br><br>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Add location block for .cgi files</li>
+              <small>
+                location /cgi-bin/{
+                  <br>
+                  fastcgi_pass unix:/var/run/fcgiwrap.socket;
+                  <br>
+                  include /etc/nginx/fastcgi_params;
+                  <br>
+          
+                  fastcgi_param SCRIPT_FILENAME /var/www/
+                  <br>
+                  html$fastcgi_script_name;
+                  <br>
+                  fastcgi_param DOCUMENT_ROOT /var/www/html;
+                  <br>
+          }
+          
+              </small>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> sudo systemctl reload nginx</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Program File</h3>
+            <ul style="list-style-type: none;">
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Create a folder name cgi-bin in /var/www/html/cgi-bin/</li>
+              <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Create a file name /cgi-bin/hello.c</li>
+              <p>Compile the file</p>
+              <ul style="list-style-type: none;">
+                <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> gcc -o /var/www/html/cgi-bin/hello.cgi hello.c</li>
+                <small>Make sure the script has executable permissions</small>
+                <li><i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> chmod +x /var/www/html/cgi-bin/hello.cgi</li>
+               <small>Let's see on browser</small> 
+                <img src="c.png" alt="" />
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Breakdown the Nginx Configuration File(nginx.conf)</h3>
+            <p style="text-align: justify">
+              NGINX configuration is the process of using a configuration file
+              to control how NGINX behaves and what it does when it receives
+              requests. The configuration file is usually located in the NGINX
+              installation directory, in the /etc/nginx/ directory
+            </p>
+            <ul style="list-style-type: none;">
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i> Directives: These are the configuration options for NGINX.
+                Directives are commands that take one or more parameters and end
+                with a semicolon.
+              </li>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>  Blocks: These are groups of directives that are organized into
+                contexts. Blocks are separated by curly brackets.
+              </li>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>  Contexts: These are scopes that can be used to group directives.
+                There can be multiple contexts in the configuration file.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <ul style="list-style-type: none;">
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>        Comments: Lines that start with a # symbol are comments and are
+                not interpreted by NGINX.
+              </li>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     Hierarchical structure: NGINX logically divides configurations
+                into blocks that live in a hierarchical structure.
+              </li>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     Server blocks: These define virtual servers that handle requests
+                of a specific type.
+              </li>
+              <li>
+                <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     Location blocks: These live within a server block and define how
+                NGINX handles requests for different resources and URIs.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     <li>user www-data</li>
+              <p>
+                -Purpose: This line sets the user under which Nginx worker
+                processes will run. In this case, its www-data, which is the
+                default user for web services in many Linux distributions.
+                <br />
+                <br />
+                -Why: It ensures Nginx has the correct permissions to serve
+                files and interact with the system securely, preventing
+                privilege escalation risks.
+              </p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     <li>worker_processes auto;</li>
+              <p>
+                -Purpose: Defines the number of worker processes that Nginx will
+                spawn to handle requests.
+                <br />
+                <br />
+                -Why: auto allows Nginx to dynamically adjust the number of
+                workers based on the available CPU cores, ensuring optimal
+                resource utilization.
+              </p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>    <li>pid /run/nginx.pid;</li>
+              <p>
+                -Purpose: Specifies the file where Nginx stores its process ID
+                (PID). <br /><br />
+                -Why: This is useful for system management and control, such as
+                restarting or stopping the Nginx service using its PID.
+              </p>
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>   <li>error_log /var/log/nginx/error.log;</li>
+              <p>
+                -Purpose: Sets the file path for Nginxs error log. <br /><br />
+                -Why: Logs are essential for debugging issues like
+                misconfigurations, server crashes, or application errors.
+              </p>
+            </ul >
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>        <li>include /etc/nginx/modules-enabled/*.conf;</li>
+              <p>
+                -Purpose: Includes configuration files for Nginx modules. -Why:
+                Modules provide additional functionality like load balancing or
+                SSL termination, and this line ensures they are loaded with
+                Nginx.
+              </p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>        <li>events { worker_connections 768; # multi_accept on; }</li>
+              <p>
+                -Purpose: The events block controls how Nginx handles
+                connections.
+                <br />
+                -worker_connections 768: Limits the number of simultaneous
+                connections each worker can handle. The higher this value, the
+                more connections the server can manage concurrently.
+                <br />
+                -multi_accept on: This would allow a worker to accept multiple
+                new connections at once. It's commented out here.
+                <br />
+                -Why: Efficiently managing connections improves the performance
+                and scalability of the server.
+              </p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>        <li>HTTP block sendfile on;</li>
+              <p>
+                The http block defines how HTTP traffic is handled, including
+                settings for compression, logging, virtual hosts, and more.
+                <br />
+                <br />
+                -Purpose: Enables the sendfile system call, which allows Nginx
+                to send files directly from disk to the client, bypassing the
+                user-space.
+                <br />
+                <br />
+                -Why: It improves performance by reducing the overhead of
+                copying file data between kernel and user memory.
+              </p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     <li>Logging settings: access_log /var/log/nginx/access.log;</li>
+              <p>
+                -Purpose: Defines the file where access logs (client requests)
+                will be stored.
+                <br />
+                <br />
+                -Why: Access logs are useful for tracking usage statistics,
+                auditing requests, and detecting unusual traffic patterns.
+              </p>
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>     <li>gzip on</li>
+              <p>-Purpose: Enables Gzip compression for HTTP responses.</p>
+            </ul>
+          </section>
+          <section>
+            <ul style="list-style-type: none;">
+              <i class="bi bi-arrow-right-circle-fill" style="font-size: 25px;"></i>      <li>
+                Virtual Hosts: include /etc/nginx/conf.d/*.conf;
+                <br />
+                include /etc/nginx/sites-enabled/*;
+              </li>
+              <p>
+                Purpose: Includes configuration files for virtual hosts from the
+                conf.d and sites-enabled directories. Why: Virtual hosts allow
+                Nginx to serve multiple websites from a single server, with
+                different domain names or configurations for each.
+              </p>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h1>Thank you!</h1>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        controls: true,
+        progress: true,
+      });
+    </script>
+  </body>
+</html>
